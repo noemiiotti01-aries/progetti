@@ -1,0 +1,163 @@
+span[class~="sr-only"] { /*selezionerà qualsiasi elemento span il cui attributo class include sr-only*/
+    border: 0 !important;
+    clip: rect(1px, 1px, 1px, 1px) !important;  /*definire la porzione visibile di un elemento.*/
+    clip-path: inset(50%) !important;
+    height: 1px !important;
+    width: 1px !important;
+    position: absolute !important;
+    overflow: hidden !important; 
+    white-space: nowrap !important; /*evitare che il contenuto del testo debordi*/
+    padding: 0 !important;
+    margin: -1px !important;
+  }
+  
+  html {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: sans-serif;
+    color: #0a0a23;
+  }
+  
+  h1 {
+    max-width: 37.25rem;
+    margin: 0 auto;
+    padding: 1.5rem 1.25rem;
+  }
+  
+  h1 .flex {
+    display: flex;
+    flex-direction: column-reverse; /*mostrerà gli elementi annidati dal basso verso l'alto*/
+    gap: 1rem;
+  }
+  
+  h1 .flex span:first-of-type { /*selezionare il primo elemento che corrisponde al selettore*/
+    font-size: 0.7em;
+  }
+  
+  h1 .flex span:last-of-type { /*seleziona l'ultimo elemento che corrisponde al selettore*/
+    font-size: 1.2em;
+  }
+  
+  section {
+    max-width: 40rem;
+    margin: 0 auto;
+    border: 2px solid #d0d0d5;
+  }
+  
+  #years {
+    display: flex;
+    justify-content: flex-end;
+    position: sticky;
+    z-index: 999; /*non venga nascosto da diversi livelli*/
+    top: 0;
+    background: #0a0a23;
+    color: #fff;
+    padding: 0.5rem calc(1.25rem + 2px) 0.5rem 0; /*calc() calcolare un valore sulla base di altri valori*/
+    margin: 0 -2px;
+  }
+  
+  #years span[class] { /*selezionerà qualsiasi elemento span che ha un set di attributi class, indipendentemente dal valore dell'attributo.*/
+    font-weight: bold;
+    width: 4.5rem;
+    text-align: right;
+  }
+  
+  .table-wrap {
+    padding: 0 0.75rem 1.5rem 0.75rem;
+  }
+
+  /*span {
+    font-weight: normal;
+  } si può eliminare*/
+  
+  table {
+    border-collapse: collapse;
+    border: 0;
+    width: 100%;
+    position: relative;
+    margin-top: 3rem;
+  }
+  
+  table caption {
+    color: #356eaf;
+    font-size: 1.3em;
+    font-weight: normal;
+    position: absolute;
+    top: -2.25rem;
+    left: 0.5rem;
+  }
+  
+  tbody td {
+    width: 100vw;
+    min-width: 4rem;
+    max-width: 4rem;
+  }
+  
+  tbody th {
+    width: calc(100% - 12rem);
+  }
+  
+  tr[class="total"] { /*qualsiasi elemento che abbia un attributo con un valore specifico. */
+    border-bottom: 4px double #0a0a23;
+    font-weight: bold;
+  }
+  
+  tr[class="total"] th {
+    text-align: left;
+    padding: 0.5rem 0 0.25rem 0.5rem;
+  }
+  
+  tr.total td { /*elementi tr in cui il valore dell'attributo class include total.*/
+    text-align: right;
+    padding: 0 0.25rem;
+  }
+  
+  tr.total td:nth-of-type(3) { /* selezionare elementi specifici in base all'ordine tra elementi fratelli dello stesso tipo.*/
+    padding-right: 0.5rem;
+  }
+  
+  tr.total:hover {
+    background-color: #99c9ff;
+  }
+  
+  td.current {
+    font-style: italic;
+  }
+  
+  tr.data {
+    background-image: linear-gradient(to bottom, #dfdfe2 1.845rem, white 1.845rem);
+  }
+  
+  tr.data th {
+    text-align: left;
+    padding-top: 0.3rem;
+    padding-left: 0.5rem;
+  }
+  
+  tr.data th .description {
+    /*selezionare gli elementi con l'attributo class impostato su description 
+    che si trovano all'interno degli elementi th nelle righe .data della tabella.*/
+    display: block;
+    font-weight: normal;
+    font-style: italic;
+    padding: 1rem 0 0.75rem;
+    margin-right: -13.5rem;
+  }
+  
+  tr.data td {
+    vertical-align: top;
+    padding: 0.3rem 0.25rem 0;
+    text-align: right;
+  }
+
+  tr.data td:last-of-type { /* specificatamente l'ultimo*/
+    padding: 0.5rem;
+  }
+
+ /* span:not(.sr-only){
+    font-weight:normal;
+    sotituito da !important
+  }
+  */

@@ -1,0 +1,6 @@
+
+Nome: noemi
+Conto: 12345
+Depositati: 500 €
+Data/Ora: Wed Sep 10 19:34:01 2025
+

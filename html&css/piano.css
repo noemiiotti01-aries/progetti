@@ -1,0 +1,79 @@
+html {
+    box-sizing: border-box;
+  }
+  
+  *, *::before, *::after {
+    /*::before crea uno pseudo-elemento che è il primo figlio dell'elemento selezionato
+    ::after crea uno pseudo-elemento che è l'ultimo figlio dell'elemento selezionato
+    creare contenuti estetici
+    selezionare tutti gli elementi con * e includi gli pseudo-elementi con ::before e ::after*/
+    box-sizing: inherit;
+  }
+  
+  #piano {
+    background-color: #00471b;
+    width: 992px;
+    height: 290px;
+    margin: 80px auto;
+    padding: 90px 20px 0 20px;
+    position: relative;
+    border-radius: 10px;
+  }
+  
+  .keys {
+    background-color: #040404;
+    width: 949px;
+    height: 180px;
+    padding-left: 2px;
+    overflow: hidden; /*nasconderà qualsiasi elemento che si trova al di fuori del valore width impostato */
+  }
+  
+  .key {
+    background-color: #ffffff;
+    position: relative;
+    width: 41px;
+    height: 175px;
+    margin: 2px;
+    float: left;
+    border-radius: 0 0 3px 3px;
+  }
+  
+  .key.black--key::after { /*selezionerà gli elementi con la classe key black--key e lo pseudo-elemento dopo questi elementi nell'HTML.*/
+    background-color: #1d1e22;
+    content: ""; /*pseudo-elementi vuoti. Assicurerà che l'elemento sia renderizzato nella pagina mentre è ancora vuoto.*/
+    position: absolute;
+    left: -18px;
+    width: 32px;
+    height: 100px;
+    border-radius: 0 0 3px 3px;
+  }
+  
+  .logo {
+    width: 200px;
+    position: absolute;
+    top: 23px;
+  }
+  
+  @media (max-width: 768px) { /*applicare il CSS in base alla larghezza del viewport usando le proprietà max-width e min-width.*/
+    #piano {
+      width: 358px;
+    }
+  
+    .keys {
+      width: 318px;
+    }
+  
+    .logo {
+      width: 150px;
+    }
+  }
+
+  @media (min-width: 769px) and (max-width: 1199px) {
+    #piano {
+        width:675px;
+      }
+    
+      .keys {
+        width:633px;
+      }
+  }

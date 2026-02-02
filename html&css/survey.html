@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en"> 
+  <head>
+    <meta charset="UTF-8">
+    <title>Simple Survey</title> 
+    <link rel="stylesheet" href="survey.css">
+  </head>
+  <body> 
+    <h1 id="title">Survey</h1>
+    <p id="description">survey for project</p>
+    <form id="survey-form">
+      <div class="form-group">
+        <label id="name-label">
+          <p> what's your name?</p>
+          <input id="name" type="text" required placeholder="name">
+        </label> 
+      </div>
+      <div class="form-group">
+        <label id="email-label">
+          <p> what's your email? </p>
+          <input id="email" type="email" required placeholder="email"> 
+        </label>
+      </div>
+      <div class="form-group">
+        <label id="number-label">
+          <p> what's your age?</p>
+          <input id="number" type="number" min="18" max="100" placeholder="age"> 
+        </label>
+      </div>
+      <div class="form-group">
+        <label id="country-label">
+          <p> where are you from?</p>
+          <select id="dropdown">
+            <option> Africa </option>
+            <option> Europe </option>
+            <option> America </option>
+            <option> Asia </option>
+            <option> Australia </option>
+          </select>
+        </label>
+      </div>
+      <div class="form-group">
+        <label id="pet-label">
+          <p> do you have a pet?</p>
+          <p> yes</p> <input type="radio" name="yn" value="yes">
+          <p> no</p> <input type="radio" name="yn" value="no">
+        </label>
+      </div>
+      <div class="form-group">
+        <label id="language-label">
+          <p> What language(s) do you speak?</p>
+          <p> Italian </p> <input type="checkbox" value="male">
+          <p> English</p> <input type="checkbox" value="female">
+          <p> Other</p> <input type="checkbox" value="other">
+        </label>
+      </div>
+      <div class="form-group">
+        <label id="describe-label">
+          <p> describe yourself </p> 
+          <textarea>  </textarea>
+        </label>
+      </div>
+      <div class="form-group">
+        <input type="submit" id="submit">
+      </div>
+    </form>
+  </body>
+</html>
