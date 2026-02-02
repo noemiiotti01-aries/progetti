@@ -1,0 +1,169 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="undertalestyle.css" />
+		<script>
+			var verso="dx";
+			var conta=0;
+			var t;
+			var sx=10;
+			var sy=100;
+			var sw=15;
+			var sz=22;
+			var tasto="si";
+			var limite=20;
+			var sopra="";
+			function leftArrowPressed() {
+				var sinistra=document.getElementById("personaggio").style.left;
+				sinistra=parseInt(sinistra);
+				sinistra=sinistra-sx;
+				document.getElementById("personaggio").style.left=sinistra;
+				if(verso=="dx"){
+					verso="sx";
+				}
+				
+			}
+			function rightArrowPressed() {
+				var destra=document.getElementById("personaggio").style.left;
+				destra=parseInt(destra);
+				destra=destra+sx;
+				document.getElementById("personaggio").style.left=destra;
+				if(verso=="sx"){
+					verso="dx";
+				}
+				
+				var leftori=document.getElementById("tori").style.left;
+				var widthtori=document.getElementById("tori").style.width;
+				leftori=parseInt(leftori);
+				widthtori=parseInt(widthtori);
+				var widthf=document.getElementById("personaggio").style.width;
+				widthf=parseInt(widthf);
+				if(destra<leftori+widthtori && destra>leftori-widthf){
+					alert("gg")
+				}
+				var lefttra=document.getElementById("transparent").style.left;
+				var widthtra=document.getElementById("transparent").style.width;
+				lefttra=parseInt(lefttra);
+				widthtra=parseInt(widthtra);
+				var toptra=document.getElementById("transparent").style.top;
+				var heightra=document.getElementById("transparent").style.height;
+				toptra=parseInt(toptra);
+				heightra=parseInt(heightra);
+				var heightf=document.getElementById("personaggio").style.height;
+				heightf=parseInt(heightf);
+				var su=document.getElementById("personaggio").style.top;
+				su=parseInt(su);
+				if(destra<lefttra+widthtra && destra>lefttra-widthf && su=="400"){
+					document.getElementById("personaggio").style.left="10";
+				}
+				
+			}
+			function up() {
+				var destra=document.getElementById("personaggio").style.left;
+				destra=parseInt(destra);
+				
+				if(verso=="dx"){
+					destra=destra+sw;
+				}else{
+					destra=destra-sw;
+				}
+				
+				document.getElementById("personaggio").style.left=destra;
+				var su=document.getElementById("personaggio").style.top;
+				su=parseInt(su);
+				if(conta<10){
+					su=su-sz;
+				}else{
+					su=su+sz;
+				}
+				document.getElementById("personaggio").style.top=su;
+				conta=conta+1;
+				if(conta>=limite){
+					sopra=="no"
+					clearInterval(t);
+					conta=0;
+					tasto="si";
+					limite=20;
+				}
+				var leftredue=document.getElementById("rectangle2").style.left;
+				var widthredue=document.getElementById("rectangle2").style.width;
+				leftredue=parseInt(leftredue);
+				widthredue=parseInt(widthredue);
+				var widthf=document.getElementById("personaggio").style.width;
+				widthf=parseInt(widthf);
+				var topredue=document.getElementById("rectangle2").style.top;
+				var heightredue=document.getElementById("rectangle2").style.height;
+				topredue=parseInt(topredue);
+				heightredue=parseInt(heightredue);
+				var heightf=document.getElementById("personaggio").style.height;
+				heightf=parseInt(heightf);
+				if(destra<leftredue+widthredue && destra>leftredue-widthf && (su<topredue-heightf || su>topredue+heightredue)){
+					if(su>topredue+heightredue){ //siamo sotto
+						if(conta<=10 && conta>0){
+							conta=limite-conta;	
+						}
+					}else{ //siamo sopra
+						limite=11;
+						sopra="si";
+					}
+				}
+			}
+			
+			function moveSelection(evt) {
+				if(evt.keyCode==37) {
+					leftArrowPressed();
+				}
+				if(evt.keyCode==39) {
+					rightArrowPressed();
+				}
+				if(evt.keyCode==38) {
+					upArrowPressed();
+				}
+			}
+			
+			function upArrowPressed(){
+				if(tasto=="si"){
+					t=setInterval(up, 100);
+					tasto="no";
+				}	
+				if(sopra=="si"){
+					conta=11;
+					if(conta>=limite){
+					clearInterval(t);
+					conta=0;
+					tasto="si";
+					limite=20;
+					}
+				}
+				//domanda: se il top del personaggio è per terra allora fa salto normale, se è su piatta, riprendere salto
+			}
+			
+		
+			
+			
+		</script>
+	</head>
+	<body id="body" onkeydown="moveSelection(event)" onkeyup=""  style="background-image:url('ruine.jpg')">
+		<div id="parte2" style="display:block;">
+			<div> 
+				<img src="frisk.gif" id="personaggio" style="position:absolute; width:80; height:130; left:10; top:400" onkeypress="cammina()"/> 
+			</div>
+			<div> 
+				<img src="toriel.png" id="tori" style="position:absolute; width:100; left:1200; top:335" /> 
+			</div>
+			<div id="rectangle" style="position:absolute; top:530" >   </div>
+			<div id="rectangle1" style="position:absolute; left:930; top:530" >   </div>
+			<div id="rectangle2" style="position:absolute; left:500; width:300; top:320; height:30" >   </div>
+			<div id="transparent" style="position:absolute; left:760; width:100; top:530; height:30" >   </div>
+			<div> 
+				<img src="flo.png" id="flo" style="position:absolute; width:80; left:150; top:450" /> 
+			</div>
+			<div> 
+				<img src="butter.png" id="butter" style="position:absolute; width:70; left:700; top:250" /> 
+			</div>
+			<input id="play" type="button" value="play" onclick="gioca()"/>
+			<audio id="base">
+				<source autoplay="true" src="ost2.mp3" type="audio/mp3">
+			</audio>
+		</div>
+	</body>
+</html>

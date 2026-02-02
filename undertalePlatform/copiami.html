@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script>
+		function leftArrowPressed() {
+			var element = document.getElementById("personaggio");
+			element.style.left = parseInt(element.style.left) - 10 + 'px';
+		}
+
+        function rightArrowPressed() {
+			var element = document.getElementById("personaggio");
+			element.style.left = parseInt(element.style.left) + 10 + 'px';
+        }
+
+		function upArrowPressed() {
+			var element = document.getElementById("personaggio");
+			element.style.top = parseInt(element.style.top) - 10 + 'px';
+		}
+
+		function downArrowPressed() {
+            var element = document.getElementById("personaggio");
+            element.style.top = parseInt(element.style.top) + 10 + 'px';
+		}
+
+		function moveSelection(evt) {
+			if(evt.keyCode==37) {
+				leftArrowPressed();
+			}
+			if(evt.keyCode==39) {
+				rightArrowPressed();
+			}
+			if(evt.keyCode==38) {
+				upArrowPressed();
+			}
+			if(evt.keyCode==40) {
+				downArrowPressed();
+			}
+			
+        }
+		</script>
+	</head>
+	<body  onkeydown="moveSelection(event)" onkeyup="">
+		<div> <img src="frisk.gif" id="personaggio" width="120" style="position:absolute; left:10px; top:200px" onkeypress="cammina()"/> </div>
+
+	</body>
+</html>

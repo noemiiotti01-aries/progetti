@@ -1,0 +1,131 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="undertalestyle.css" />
+		<script>
+			var verso="dx";
+			var conta=0;
+			var t;
+			var sx=10;
+			var sy=100;
+			var sw=30;
+			var sz=50;
+			var tasto="si";
+			var t;
+			var te;
+			var fuoco="si";
+			var fuoco1="si";
+			function leftArrowPressed() {
+				var sinistra=document.getElementById("personaggio").style.left;
+				sinistra=parseInt(sinistra);
+				sinistra=sinistra-sx;
+				document.getElementById("personaggio").style.left=sinistra;
+				if(verso=="dx"){
+					verso="sx";
+				}
+			}
+			function rightArrowPressed() {
+				var destra=document.getElementById("personaggio").style.left;
+				destra=parseInt(destra);
+				destra=destra+sx;
+				document.getElementById("personaggio").style.left=destra;
+				if(verso=="sx"){
+					verso="dx";
+				}
+			}
+			function up() {
+				var destra=document.getElementById("personaggio").style.left;
+				destra=parseInt(destra);
+				
+				if(verso=="dx"){
+					destra=destra+sw;
+				}else{
+					destra=destra-sw;
+				}
+				
+				document.getElementById("personaggio").style.left=destra;
+				var su=document.getElementById("personaggio").style.top;
+				su=parseInt(su);
+				if(conta<5){
+					su=su-sz;
+				}else{
+					su=su+sz;
+				}
+				document.getElementById("personaggio").style.top=su;
+				conta=conta+1;
+				if(conta==10){
+					clearInterval(t);
+					conta=0;
+					tasto="si";
+				}
+			}
+			
+			function moveSelection(evt) {
+				if(evt.keyCode==37) {
+					leftArrowPressed();
+				}
+				if(evt.keyCode==39) {
+					rightArrowPressed();
+				}
+				if(evt.keyCode==38) {
+					upArrowPressed();
+				}
+			}
+			
+			function vai(){
+			if(fuoco=="si"){
+				document.getElementById("fire").style.display="none";
+				fuoco="no";
+			}else{
+				document.getElementById("fire").style.display="block";
+				fuoco="si";
+			}
+			 if(fuoco1=="si"){
+				document.getElementById("fire1").style.display="none";
+				fuoco1="no";
+			}else{
+				document.getElementById("fire1").style.display="block";
+				fuoco1="si";
+			}
+			
+			}
+			
+			function upArrowPressed(){
+				t=setInterval(up, 100);
+			}
+			function fiamme(){
+				te=setInterval(vai, 1500);
+			}
+			
+		</script>
+	</head>
+	<body id="body" onkeydown="moveSelection(event)" onkeyup=""  style="background-image:url('hot.png')" onload="fiamme()" >
+		<div id="parte5" style="display:block;">
+			<div> 
+				<img src="frisk.gif" id="personaggio" style="position:absolute; left:10; top:400; width:80" onkeypress="cammina()"/> 
+			</div>
+			<div> 
+				<img src="metta.png" id="metta" style="position:absolute; left:1200; top:310; width:160" /> 
+			</div>
+			<div id="rectangle7" style="position:absolute; top:530" >   </div>
+			<div id="rectangle8" style="position:absolute; left:500; top:530" >   </div>
+			<div id="rectangle9" style="position:absolute; left:1000; top:530" >   </div>
+			<div> 
+				<img src="fire.png" id="fire" style="position:absolute; display:block; left:200; top:150; width:400; height:500" /> 
+			</div>
+			<div> 
+				<img src="fire.png" id="fire1" style="position:absolute; display:block; left:700; top:150; width:400; height:500" /> 
+			</div>
+			<div> 
+				<img src="flo.png" id="flo" style="position:absolute; left:150; top:450; width:80" /> 
+			</div>
+			<div> 
+				<img src="butter.png" id="butter" style="position:absolute; left:600; top:480; width:70;" /> 
+			</div>
+			<input id="play" type="button" value="play" onclick="gioca()"/>
+					<audio id="base4">
+						<source autoplay="true" src="ost5.mp3" type="audio/mp3">
+					</audio>
+		</div>
+
+	</body>
+</html>

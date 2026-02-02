@@ -1,0 +1,118 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="undertalestyle.css" />
+		<script>
+			var verso="dx";
+			var conta=0;
+			var t;
+			var sx=10;
+			var sy=100;
+			var sw=30;
+			var sz=50;
+			var tasto="si";
+			
+			var myWindow;
+			
+			function leftArrowPressed() {
+				var sinistra=document.getElementById("personaggio").style.left;
+				sinistra=parseInt(sinistra);
+				sinistra=sinistra-sx;
+				document.getElementById("personaggio").style.left=sinistra;
+				if(verso=="dx"){
+					verso="sx";
+				}
+			}
+			function rightArrowPressed() {
+				var destra=document.getElementById("personaggio").style.left;
+				destra=parseInt(destra);
+				destra=destra+sx;
+				document.getElementById("personaggio").style.left=destra;
+				if(verso=="sx"){
+					verso="dx";
+				}
+				
+				var leftflo=document.getElementById("flo").style.left;
+				var widthflo=document.getElementById("flo").style.width;
+				leftflo=parseInt(leftflo);
+				widthflo=parseInt(widthflo);
+				var widthf=document.getElementById("personaggio").style.width;
+				widthf=parseInt(widthf);
+				if(destra<leftflo+widthflo && destra>leftflo-widthf){
+					document.getElementById("flo").style.left=leftflo;
+					document.getElementById("flo").style.width=widthflo;
+					document.getElementById("personaggio").style.width=widthf;
+					alert ("hey");
+				}
+			}
+			function up() {
+				var destra=document.getElementById("personaggio").style.left;
+				destra=parseInt(destra);
+				
+				if(verso=="dx"){
+					destra=destra+sw;
+				}else{
+					destra=destra-sw;
+				}
+				
+				document.getElementById("personaggio").style.left=destra;
+				var su=document.getElementById("personaggio").style.top;
+				su=parseInt(su);
+				if(conta<5){
+					su=su-sz;
+				}else{
+					su=su+sz;
+				}
+				document.getElementById("personaggio").style.top=su;
+				conta=conta+1;
+				if(conta==10){
+					clearInterval(t);
+					conta=0;
+					tasto="si";
+				}
+			}
+			
+			function moveSelection(evt) {
+				if(evt.keyCode==37) {
+					leftArrowPressed();
+				}
+				if(evt.keyCode==39) {
+					rightArrowPressed();
+				}
+				if(evt.keyCode==38) {
+					upArrowPressed();
+				}
+			}
+			
+			function upArrowPressed(){
+				if(tasto=="si"){
+					t=setInterval(up, 100);
+					tasto="no";
+				
+				}
+			
+				
+			}
+			function windowOpen(){
+			alert("sup");
+			var window=window.resizeBy(1366, 768);
+			}
+			
+		</script>
+	</head>
+	<body  onkeydown="moveSelection(event)" onkeyup=""  style="background-image:url('ruine.jpg')" onload="windowOpen()">
+		<div> 
+			<img src="frisk.gif" id="personaggio"  style="position:absolute; left:10; top:400; width:80;" onkeypress="cammina()"/> 
+		</div>
+		<div> 
+			<img src="toriel.png" id="tori" width="100" style="position:absolute; left:1200; top:335" /> 
+		</div>
+		<div id="rectangle2" style="position:absolute; left:400; top:300" >   </div>
+		<div> 
+			<img src="flo.png" id="flo" style="position:absolute; left:150; top:450; width:80;" /> 
+		</div>
+		<div> 
+			<img src="butter.png" id="butter" width="70" style="position:absolute; left:460; top:250" /> 
+		</div>
+
+	</body>
+</html>

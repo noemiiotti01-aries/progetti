@@ -1,0 +1,149 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="undertalestyle.css" />
+		<script>
+			var verso="dx";
+			var conta=0;
+			var t;
+			var sx=10;
+			var sy=100;
+			var sw=30;
+			var sz=50;
+			var tasto="si";
+			var tf;
+			var fork="";
+			function leftArrowPressed() {
+				var sinistra=document.getElementById("personaggio").style.left;
+				sinistra=parseInt(sinistra);
+				sinistra=sinistra-sx;
+				document.getElementById("personaggio").style.left=sinistra;
+				if(verso=="dx"){
+					verso="sx";
+				}
+			}
+			function rightArrowPressed() {
+				var destra=document.getElementById("personaggio").style.left;
+				destra=parseInt(destra);
+				destra=destra+sx;
+				document.getElementById("personaggio").style.left=destra;
+				if(verso=="sx"){
+					verso="dx";
+				}
+			}
+			function up() {
+				var destra=document.getElementById("personaggio").style.left;
+				destra=parseInt(destra);
+				
+				if(verso=="dx"){
+					destra=destra+sw;
+				}else{
+					destra=destra-sw;
+				}
+				
+				document.getElementById("personaggio").style.left=destra;
+				var su=document.getElementById("personaggio").style.top;
+				su=parseInt(su);
+				if(conta<5){
+					su=su-sz;
+				}else{
+					su=su+sz;
+				}
+				document.getElementById("personaggio").style.top=su;
+				conta=conta+1;
+				if(conta==10){
+					clearInterval(t);
+					conta=0;
+					tasto="si";
+				}
+			}
+			
+			function moveSelection(evt) {
+				if(evt.keyCode==37) {
+					leftArrowPressed();
+				}
+				if(evt.keyCode==39) {
+					rightArrowPressed();
+				}
+				if(evt.keyCode==38) {
+					upArrowPressed();
+				}
+			}
+			function giu(){
+				var sutri=document.getElementById("tri").style.top;
+				sutri=parseInt(sutri);
+				sutri=sutri+20;
+				
+				document.getElementById("tri").style.top=sutri;
+				
+				document.getElementById("tri1").style.top=sutri-60;
+				
+				document.getElementById("tri2").style.top=sutri-120;
+				
+				document.getElementById("tri3").style.top=sutri-180;
+				
+				document.getElementById("tri4").style.top=sutri-240;
+				
+				document.getElementById("tri5").style.top=sutri-300;
+				
+				document.getElementById("tri6").style.top=sutri-360;
+				
+				document.getElementById("tri7").style.top=sutri-420;
+			
+			}
+			
+			function upArrowPressed(){
+				t=setInterval(up, 100);
+			}
+			function fork1(){
+				tf=setInterval(giu, 350);
+			}
+			
+		</script>
+	</head>
+	<body id="body" onkeydown="moveSelection(event)" onkeyup=""  style="background-image:url('castle.jpg')" onload="fork1()" >
+	<div id="parte6" style="display:block;">
+			<div> 
+				<img src="frisk.gif" id="personaggio" style="position:absolute; left:10; top:400; width:80" onkeypress="cammina()"/> 
+			</div>
+			<div> 
+				<img src="asgore.png" id="asgore" style="position:absolute; left:1050; top:365; width:300" /> 
+			</div>
+			<div id="rectangle10" style="position:absolute; top:530" >   </div>
+			<div> 
+				<img src="flo.png" id="flo" style="position:absolute; left:150; top:450; width:80" /> 
+			</div>
+			<div> 
+				<img src="butter.png" id="butter" style="position:absolute; left:600; top:300; width:70" /> 
+			</div>
+			<div > 
+				<img src="tri.png" id="tri" style="position:absolute; left:0; top:0; width:100" /> 
+			</div>
+			<div > 
+				<img src="tri.png" id="tri1" style="position:absolute; left:150; top:-60; width:100" /> 
+			</div>
+			<div > 
+				<img src="tri.png" id="tri2" style="position:absolute; left:300; top:-120; width:100" /> 
+			</div>
+			<div > 
+				<img src="tri.png" id="tri3" style="position:absolute; left:450; top:-180; width:100" /> 
+			</div>
+			<div > 
+				<img src="tri.png" id="tri4" style="position:absolute; left:600; top:-240; width:100" /> 
+			</div>
+			<div > 
+				<img src="tri.png" id="tri5" style="position:absolute; left:750; top:-300; width:100" /> 
+			</div>
+			<div > 
+				<img src="tri.png" id="tri6" style="position:absolute; left:900; top:-360; width:100" /> 
+			</div>
+			<div > 
+				<img src="tri.png" id="tri7" style="position:absolute; left:1050; top:-420; width:100" /> 
+			</div>
+			
+			<input id="play" type="button" value="play" onclick="gioca()"/>
+						<audio id="base5">
+							<source autoplay="true" src="ost6.mp3" type="audio/mp3">
+						</audio>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,95 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="undertalestyle.css" />
+		<script>
+			var verso="dx";
+			var conta=0;
+			var t;
+			var sx=10;
+			var sy=100;
+			var sw=30;
+			var sz=50;
+			function leftArrowPressed() {
+				var sinistra=document.getElementById("personaggio").style.left;
+				sinistra=parseInt(sinistra);
+				sinistra=sinistra-sx;
+				document.getElementById("personaggio").style.left=sinistra;
+
+			}
+			function rightArrowPressed() {
+				var destra=document.getElementById("personaggio").style.left;
+				destra=parseInt(destra);
+				destra=destra+sx;
+				document.getElementById("personaggio").style.left=destra;
+				
+				var leftw=document.getElementById("fall").style.left;
+				var widthw=document.getElementById("fall").style.width;
+				leftw=parseInt(leftw);
+				widthw=parseInt(widthw);
+				var widthf=document.getElementById("personaggio").style.width;
+				widthf=parseInt(widthf);
+				if(destra<leftw+widthw && destra>leftw-widthf){
+					document.getElementById("fall").style.left=leftw;
+					document.getElementById("fall").style.width=widthw;
+					document.getElementById("personaggio").style.width=widthf;
+					alert ("hey");
+					}
+			}
+			
+			function upArrowPressed() {
+				var su=document.getElementById("personaggio").style.top;
+				su=parseInt(su);
+				su=su-sz;
+				document.getElementById("personaggio").style.top=su;
+			}
+			function downArrowPressed() {
+				var giu=document.getElementById("personaggio").style.top;
+				giu=parseInt(giu);
+				giu=giu+sz;
+				document.getElementById("personaggio").style.top=giu;
+			}
+			
+			function moveSelection(evt) {
+				if(evt.keyCode==37) {
+					leftArrowPressed();
+				}
+				if(evt.keyCode==39) {
+					rightArrowPressed();
+				}
+				if(evt.keyCode==38) {
+					upArrowPressed();
+				}
+				if(evt.keyCode==40) {
+				downArrowPressed();
+				}
+			}
+	
+			
+		</script>
+	</head>
+	<body id="body" onkeydown="moveSelection(event)" onkeyup=""  style="background-image:url('water.jpg')">
+		<div id="parte4" style="display:none;">
+			<div> 
+				<img src="undyne.png" id="undyne"  style="position:absolute; left:1200; top:200; width:100;" /> 
+			</div>
+			<div> 
+				<img src="fall.png" id="fall"  style="position:absolute; left:200; width:300; height:400;" /> 
+			</div>
+			<div> 
+				<img src="fall.png" id="fall1"  style="position:absolute; left:800; top:240; width:300; height:400;"  /> 
+			</div>
+			<div id="rectangle6" style="position:absolute; top:410; left:1200" >   </div>
+			<div> 
+				<img src="flo.png" id="flo" style="position:absolute; left:150; top:550; width:80" /> 
+			</div>
+			<div> 
+				<img src="butter.png" id="butter" style="position:absolute; left:600; top:250; width:70;" /> 
+			</div>
+			<input id="play" type="button" value="play" onclick="gioca()"/>
+				<audio id="base3">
+					<source autoplay="true" src="ost4.mp3" type="audio/mp3">
+				</audio>
+		</div>
+
+	</body>
+</html>

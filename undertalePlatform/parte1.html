@@ -1,0 +1,29 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="undertalestyle.css" />
+		<script>
+			function gioca() {
+				alert("nuovo");
+			}
+			function infor() {
+				alert("info");
+			}
+			function attivaudio() {
+			document.getElementById("base").play();
+			}
+		</script>
+	</head>
+	<body id="body" style="background-image:url('title.png')">
+		<div id="parte1" style="display:block;">
+			<div id="menu" style="text-align:center;">
+				<h1> Undertale </h1>
+				<div> <input id="playbutton1" type="button" value="gioca" onclick="gioca()"/>  </div>
+				<div> <input id="infobutton2" type="button" value="informazioni" onclick="infor()"/>  </div>
+			</div>
+			<input id="play" type="button" value="play" onclick="attivaudio()"/>
+			<audio id="base">
+				<source autoplay="true" src="ost1.mp3" type="audio/mp3">
+			</audio>
+		</div>
+	</body>
+</html>
